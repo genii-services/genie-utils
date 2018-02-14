@@ -25,7 +25,7 @@ const _ = require('lodash');
  * @return {String} singular or plural, * is replaced with count
  * @api public
  */
-var plural = exports.plural = function plural (count, sn, pl) {
+let plural = exports.plural = function plural (count, sn, pl) {
 	if (arguments.length === 1) {
 		//.{ 파라메타가 문자열 하나로써 한글인 경우 복수처리를 하지 않음
 		if(typeof count == 'string' && count.match(/[^a-zA-Z]$/) != null ) {
@@ -55,7 +55,7 @@ var plural = exports.plural = function plural (count, sn, pl) {
  * @return {String}
  * @api public
  */
-var keyToPath = exports.keyToPath = function keyToPath (str, plural) {
+let keyToPath = exports.keyToPath = function keyToPath (str, plural) {
 	if (str && str.toString) str = str.toString();
 	if (!keystoneUtils.isString(str) || !str.length) return '';									//.상속 형태로 수정
 	var parts = keystoneUtils.slug(keystoneUtils.keyToLabel(str)).split('-');					//.상속 형태로 수정
@@ -76,7 +76,7 @@ var keyToPath = exports.keyToPath = function keyToPath (str, plural) {
  * @return {String}
  * @api public
  */
-var keyToProperty = exports.keyToProperty = function keyToProperty (str, plural) {
+let keyToProperty = exports.keyToProperty = function keyToProperty (str, plural) {
 	if (str && str.toString) str = str.toString();
 	if (!keystoneUtils.isString(str) || !str.length) return '';									//.상속 형태로 수정
 	var parts = keystoneUtils.slug(keystoneUtils.keyToLabel(str)).split('-');					//.상속 형태로 수정
@@ -95,7 +95,7 @@ var keyToProperty = exports.keyToProperty = function keyToProperty (str, plural)
  * 한글의 받침에 따라 바뀌는 조사 처리
  * 아래로 갈수록 빈도수가 높음
  */
-var pps = [
+let pps = [
 	[2, '야말로','이야말로', '(이)야말로'],
 	[2, '로써','으로써', '(으)로써'],
 	[2, '든지','이든지', '(이)든지'],
@@ -120,8 +120,8 @@ var pps = [
 	[2, '는','은'],
 ];
 
-var nums = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
-var alphas = [
+let nums = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
+let alphas = [
 	'아',	//a
 	'밥',	//b
 	'크',	//c
@@ -151,7 +151,7 @@ var alphas = [
 ];
 
 
-var ppz = {};
+let ppz = {};
 _.forEach(pps, function(items) {
 	_.forEach(items, function(item) {
 		if(typeof item == 'string') {
@@ -164,7 +164,7 @@ _.forEach(pps, function(items) {
 	ppz[items[2] + '/' + items[1]] = items;
 });
 
-var postposition = exports.postposition = function(txt, pp) {
+let postposition = exports.postposition = function(txt, pp) {
 	if(!pp) return '';
 	let josa = pp.trim();
 	if(!josa || josa == '') return '';
