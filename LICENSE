@@ -1,20 +1,12 @@
-The MIT License (MIT)
+The GNU License
 
-Copyright (c) 2016 Jed Watson
+Copyright (c) 2017 YoonHo Ka스
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
+The Free Software Foundation (FSF)'s Licensing & Compliance Lab has been tracking the public discussion of licensing issues surrounding ZFS and the kernel Linux with interest. We haven't made any statement about it, but we plan to soon.
+UPDATE: on April 11th we announced the publication of Interpreting, enforcing and changing the GNU GPL, as applied to combining Linux and ZFS, by FSF founder and president, Richard M. Stallman.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Although the FSF does not hold copyright on either Linux or ZFS, we are receiving many questions about what it all means for interpretation of the GNU GPL in general.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+While developers who hold copyright on a given program are always the ones who decide whether to apply their work's license in any particular situation, the FSF provides general materials that make clear the intent behind the GNU family of licenses, and the legal basis for that intent. We know that many people rely on materials like the GPL FAQ and our list of licenses.
+
+These resources are most useful when they have been thoroughly reviewed before publication so as not to later require significant correction or alteration for foreseeable reasons. This process takes time now, but saves time later by avoiding confusion. We will be publishing an analysis, and possibly making improvements to our other related resources, as soon as they are ready.
