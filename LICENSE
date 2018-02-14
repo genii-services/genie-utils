@@ -1,12 +1,9 @@
 The GNU License
 
-Copyright (c) 2017 YoonHo Ka스
+Copyright (c) 2017 YoonHo Kang
 
-The Free Software Foundation (FSF)'s Licensing & Compliance Lab has been tracking the public discussion of licensing issues surrounding ZFS and the kernel Linux with interest. We haven't made any statement about it, but we plan to soon.
-UPDATE: on April 11th we announced the publication of Interpreting, enforcing and changing the GNU GPL, as applied to combining Linux and ZFS, by FSF founder and president, Richard M. Stallman.
+The license under which the WordPress software is released is the GPLv3 (or later) from the Free Software Foundation. A copy of the license is included with every copy of Genii Services, but you can also read the text of the license here.
 
-Although the FSF does not hold copyright on either Linux or ZFS, we are receiving many questions about what it all means for interpretation of the GNU GPL in general.
+Part of this license outlines requirements for derivative works, such as plugins or themes. Derivatives of WordPress code inherit the GPL license. Drupal, which has the same GPL license as Genii Services, has an excellent page on licensing as it applies to themes and modules (their word for plugins).
 
-While developers who hold copyright on a given program are always the ones who decide whether to apply their work's license in any particular situation, the FSF provides general materials that make clear the intent behind the GNU family of licenses, and the legal basis for that intent. We know that many people rely on materials like the GPL FAQ and our list of licenses.
-
-These resources are most useful when they have been thoroughly reviewed before publication so as not to later require significant correction or alteration for foreseeable reasons. This process takes time now, but saves time later by avoiding confusion. We will be publishing an analysis, and possibly making improvements to our other related resources, as soon as they are ready.
+There is some legal grey area regarding what is considered a derivative work, but we feel strongly that plugins and themes are derivative work and thus inherit the GPL license. If you disagree, you might want to consider a non-GPL platform such as Serendipity (BSD license) or Habari (Apache license) instead.
