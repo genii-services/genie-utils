@@ -1,0 +1,41 @@
+{
+  "name": "genie-utils",
+  "version": "0.4.0",
+  "description": "A useful libraries of utilities for Genie",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aceshine/genie-utils.git"
+  },
+  "keywords": [
+    "util",
+    "utils",
+    "string manipulation",
+    "conversion",
+    "helpers",
+    "functional",
+    "html",
+    "string",
+    "diacritics",
+    "transliterate",
+    "transliteration",
+    "html entities"
+  ],
+  "dependencies": {
+    "keystone-utils": "0.4.0"
+  },
+  "devDependencies": {
+  },
+  "author": {
+    "name": "YoonHo Kang"
+  },
+  "license": "MIT",
+  "readme": "ERROR: No README data found!",
+  "bugs": {
+    "url": "https://github.com/Aceshine/genie-utils/issues"
+  },
+  "scripts": {
+    "lint": "happiness",
+    "test": "./node_modules/.bin/mocha ./tests -R spec"
+  }
+}
