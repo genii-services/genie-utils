@@ -9,9 +9,9 @@
 // HTML Entity encode / decode is based on code in node-html-to-text
 // see https://github.com/werk85/node-html-to-text
 
-const keystoneUtils = require('keystone-utils')
-const inflect = require('i')()
 const _ = require('lodash')
+const inflect = require('i')()
+const keystoneUtils = require('keystone-utils')
 
 /**
  * Displays the singular or plural of a string based on a number
@@ -62,7 +62,6 @@ const keyToPath = function keyToPath (str, plural) {
 	}
 	return parts.join('-')
 }
-
 
 /**
  * Converts a key to a property. Like keyToPath but converts
@@ -203,14 +202,7 @@ const postposition = exports.postposition = function(txt, pp) {
 }
 
 exports = module.exports = keystoneUtils
+exports.moment = require('moment') // 날짜 관련 유틸리티
 exports.plural = plural
 exports.keyToPath = keyToPath
-exports.withPostposition = function(txt, pp) {
-	return txt + postposition(txt, pp)
-}
-
-/**
- * 날짜 관련 유틸리티
- *
- */
-exports.moment = require('moment')
+exports.withPostposition = (txt, pp) => txt + postposition(txt, pp)
