@@ -1,4 +1,4 @@
-﻿/* eslint no-unused-vars:0 */
+/* eslint no-unused-vars:0 */
 
 // Credits:
 // ========
@@ -9,9 +9,9 @@
 // HTML Entity encode / decode is based on code in node-html-to-text
 // see https://github.com/werk85/node-html-to-text
 
-const keystoneUtils = exports = module.exports = require('keystone-utils');
-const inflect = require('i')();
-const _ = require('lodash');
+const keystoneUtils = require('keystone-utils')
+const inflect = require('i')()
+const _ = require('lodash')
 
 /**
  * Displays the singular or plural of a string based on a number
@@ -25,27 +25,23 @@ const _ = require('lodash');
  * @return {String} singular or plural, * is replaced with count
  * @api public
  */
-let plural = exports.plural = function plural (count, sn, pl) {
+const plural = function plural (count, sn, pl) {
 	if (arguments.length === 1) {
 		//.{ 파라메타가 문자열 하나로써 한글인 경우 복수처리를 하지 않음
-		if(typeof count == 'string' && count.match(/[^a-zA-Z]$/) != null ) {
-			return count;
-		}
+		if(typeof count == 'string' && count.match(/[^a-zA-Z]$/) != null ) return count
 		//.}
-		return inflect.pluralize(count);
+		return inflect.pluralize(count)
 	}
-	if (typeof sn !== 'string') sn = '';
-	if (!pl) {
-		pl = ( sn.match(/[a-zA-Z]$/) != null ) ? inflect.pluralize(sn) : sn;	//.영문인 경우에만 복수형으로 변환
-	}
-	if (typeof count === 'string') {
-		count = Number(count);
-	} else if (typeof count !== 'number') {
-		count = Object.keys(count).length;
-	}
-	return (count === 1 ? sn : pl).replace('*', count);
-};
+	if (typeof sn !== 'string') sn = ''
+	if (!pl) pl = ( sn.match(/[a-zA-Z]$/) != null ) ? inflect.pluralize(sn) : sn	//.영문인 경우에만 복수형으로 변환
 
+	if (typeof count === 'string') {
+		count = Number(count)
+	} else if (typeof count !== 'number') {
+		count = Object.keys(count).length
+	}
+	return (count === 1 ? sn : pl).replace('*', count)
+}
 
 /**
  * Converts a key to a path. Like slug(keyToLabel(str)) but
@@ -55,17 +51,17 @@ let plural = exports.plural = function plural (count, sn, pl) {
  * @return {String}
  * @api public
  */
-let keyToPath = exports.keyToPath = function keyToPath (str, plural) {
-	if (str && str.toString) str = str.toString();
-	if (!keystoneUtils.isString(str) || !str.length) return '';									//.상속 형태로 수정
-	var parts = keystoneUtils.slug(keystoneUtils.keyToLabel(str)).split('-');					//.상속 형태로 수정
+const keyToPath = function keyToPath (str, plural) {
+	if (str && str.toString) str = str.toString()
+	if (!keystoneUtils.isString(str) || !str.length) return ''									//.상속 형태로 수정
+	var parts = keystoneUtils.slug(keystoneUtils.keyToLabel(str)).split('-')					//.상속 형태로 수정
 	if (parts.length && plural) {
 		if (parts[parts.length - 1].match(/[a-zA-Z]$/)) {										//.한글에 대한 예회처리로써 영문만 처리함
-			parts[parts.length - 1] = inflect.pluralize(parts[parts.length - 1]);
+			parts[parts.length - 1] = inflect.pluralize(parts[parts.length - 1])
 		}
 	}
-	return parts.join('-');
-};
+	return parts.join('-')
+}
 
 
 /**
@@ -76,26 +72,26 @@ let keyToPath = exports.keyToPath = function keyToPath (str, plural) {
  * @return {String}
  * @api public
  */
-let keyToProperty = exports.keyToProperty = function keyToProperty (str, plural) {
-	if (str && str.toString) str = str.toString();
-	if (!keystoneUtils.isString(str) || !str.length) return '';									//.상속 형태로 수정
-	var parts = keystoneUtils.slug(keystoneUtils.keyToLabel(str)).split('-');					//.상속 형태로 수정
+const keyToProperty = exports.keyToProperty = function keyToProperty (str, plural) {
+	if (str && str.toString) str = str.toString()
+	if (!keystoneUtils.isString(str) || !str.length) return ''									//.상속 형태로 수정
+	var parts = keystoneUtils.slug(keystoneUtils.keyToLabel(str)).split('-')					//.상속 형태로 수정
 	if (parts.length && plural) {
 		if (parts[parts.length - 1].match(/[a-zA-Z]$/)) {										//.한글에 대한 예회처리로써 영문만 처리함
-			parts[parts.length - 1] = inflect.pluralize(parts[parts.length - 1]);
+			parts[parts.length - 1] = inflect.pluralize(parts[parts.length - 1])
 		}
 	}
 	for (var i = 1; i < parts.length; i++) {
-		parts[i] = upcase(parts[i]);
+		parts[i] = upcase(parts[i])
 	}
-	return parts.join('');
-};
+	return parts.join('')
+}
 
 /*.
  * 한글의 받침에 따라 바뀌는 조사 처리
  * 아래로 갈수록 빈도수가 높음
  */
-let pps = [
+const pps = [
 	[2, '야말로','이야말로', '(이)야말로'],
 	[2, '로써','으로써', '(으)로써'],
 	[2, '든지','이든지', '(이)든지'],
@@ -118,10 +114,10 @@ let pps = [
 	[2, '가','이'],
 	[2, '를','을'],
 	[2, '는','은'],
-];
+]
 
-let nums = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
-let alphas = [
+const nums = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구']
+const alphas = [
 	'아',	//a
 	'밥',	//b
 	'크',	//c
@@ -148,76 +144,73 @@ let alphas = [
 	'스',	//x
 	'이',	//y
 	'즈',	//z
-];
+]
 
+const ppz = {};
+_.forEach(pps, (items) => {
+	_.forEach(items, (item) => {
+		if(typeof item == 'string') ppz[item] = items
+	})
+	ppz[items[1] + '(' + items[2] + ')'] = 
+	ppz[items[2] + '(' + items[1] + ')'] = 
+	ppz[items[1] + '/' + items[2]] = 
+	ppz[items[2] + '/' + items[1]] = items
+})
 
-let ppz = {};
-_.forEach(pps, function(items) {
-	_.forEach(items, function(item) {
-		if(typeof item == 'string') {
-			ppz[item] = items;
-		}
-	});
-	ppz[items[1] + '(' + items[2] + ')'] = items;
-	ppz[items[2] + '(' + items[1] + ')'] = items;
-	ppz[items[1] + '/' + items[2]] = items;
-	ppz[items[2] + '/' + items[1]] = items;
-});
+const postposition = exports.postposition = function(txt, pp) {
+	if(!pp) return ''
+	let josa = pp.trim()
+	if(!josa || josa == '') return ''
 
-let postposition = exports.postposition = function(txt, pp) {
-	if(!pp) return '';
-	let josa = pp.trim();
-	if(!josa || josa == '') return '';
-
-	let i = txt.length, char;
+	let i = txt.length, char
 	do {
-		i--;
-		if (i < 0) return pp;						// 특수문자를 제외한 문자가 없으면
-		char = txt.charAt(i);
-	} while(/^[!-/|:-@|[-`|{-¿|ˆ-΅|–-〕]+$/.test(char));	// 문자열 끝자리가 특수문자이면
+		i--
+		if (i < 0) return pp						// 특수문자를 제외한 문자가 없으면
+		char = txt.charAt(i)
+	} while(/^[!-/|:-@|[-`|{-¿|ˆ-΅|–-〕]+$/.test(char))	// 문자열 끝자리가 특수문자이면
 
 	// finalConsonant(종성) : 0이 아니면 받침있음
-	let finalConsonant;
+	let finalConsonant
 	if(/^[0-9]+$/.test(char)) {
 		// 숫자인 경우
-		char = nums[char];
+		char = nums[char]
 	}
 	else if(/^[A-Z]+$/.test(char)) {
 		// 영어 알파벳인 경우
-		char = alphas[char.charCodeAt(0) - 0x41];
+		char = alphas[char.charCodeAt(0) - 0x41]
 	}
 	else if(/^[a-z]+$/.test(char)) {
 		// 영어 알파벳인 경우
-		char = alphas[char.charCodeAt(0) - 0x61];
+		char = alphas[char.charCodeAt(0) - 0x61]
 	}
 	if(/^[가-힣]+$/.test(char)) {
-		let code = char.charCodeAt(0) - 44032;
-		// initialConsonant = 19, middleConsonant = 21, finalConsonant=28;
-		finalConsonant = code % 28;
+		let code = char.charCodeAt(0) - 44032
+		// initialConsonant = 19, middleConsonant = 21, finalConsonant=28
+		finalConsonant = code % 28
 	}
 	else if(/^[ᄀ-ᇹ|ㄱ-ㆎ]+$/.test(char)) {
-		finalConsonant = 1;
+		finalConsonant = 1
 	}
 	else {
 		return pp; // 한글이 아니면
 	}
-	let ppInfo = ppz[josa];
-	if(!ppInfo) {
-		// 받침에 따라 바뀌는 조사가 아님
-		return pp;
-	}
+	let ppInfo = ppz[josa]
+	if(!ppInfo) return pp // 받침에 따라 바뀌는 조사가 아님
+
 	// '로','으로'의 경우 앞 말이 받침 없이 끝나거나 ㄹ 받침으로 끝나면 '로', 앞 말이 ㄹ 이 아닌 받침으로 끝난다면 '으로'가 붙는다.
-	let ppIdx = (finalConsonant === 8) ? ppInfo[0] : (finalConsonant ? 2 : 1);	//
-	return ppInfo[ppIdx];
+	let ppIdx = (finalConsonant === 8) ? ppInfo[0] : (finalConsonant ? 2 : 1)	//
+	return ppInfo[ppIdx]
 }
 
-
+exports = module.exports = keystoneUtils
+exports.plural = plural
+exports.keyToPath = keyToPath
 exports.withPostposition = function(txt, pp) {
-	return txt + postposition(txt, pp);
+	return txt + postposition(txt, pp)
 }
 
 /**
  * 날짜 관련 유틸리티
  *
  */
-exports.moment = require('moment');
+exports.moment = require('moment')
